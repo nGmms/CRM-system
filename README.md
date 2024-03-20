@@ -1,7 +1,9 @@
-Manager:
-Username: manager
-Password: 123
+## Login Credentials
 
-Employee:
-Username: employee
-Password: 123
+### Manager:
+- **Username:** `manager`
+- **Password:** `123`
+
+### Employee:
+- **Username:** `employee`
+- **Password:** `123`
