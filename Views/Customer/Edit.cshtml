@@ -1,0 +1,50 @@
+@model CRMSystem.Models.Customer
+
+<h2>Edit Customer</h2>
+
+@using (Html.BeginForm("Edit", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.CustomerNo)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)<br>
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" }})
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Surname)<br>
+        @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" }})
+        @Html.ValidationMessageFor(model => model.Surname)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address)<br>
+        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" }})
+        @Html.ValidationMessageFor(model => model.Address)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PostCode)<br>
+        @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { @class = "form-control" }})
+        @Html.ValidationMessageFor(model => model.PostCode)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Country)<br>
+        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" }})
+        @Html.ValidationMessageFor(model => model.Country)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateOfBirth)<br>
+        @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { type = "date", @class = "form-control" }})
+        @Html.ValidationMessageFor(model => model.DateOfBirth)
+    </div>
+
+    <button type="submit">Save</button>
+}
+
+@Html.ActionLink("Back to List", "Index")

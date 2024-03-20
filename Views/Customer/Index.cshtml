@@ -1,0 +1,62 @@
+@model IEnumerable<CRMSystem.Models.Customer>
+
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Customers</h2>
+
+<a href="@Url.Action("GenerateReport", "Report")">Generate Report</a>
+
+<table>
+    <tr>
+        <th>Customer No</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Address</th>
+        <th>Post Code</th>
+        <th>Country</th>
+        <th>Date Of Birth</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.CustomerNo</td>
+            <td>@customer.Name</td>
+            <td>@customer.Surname</td>
+            <td>@customer.Address</td>
+            <td>@customer.PostCode</td>
+            <td>@customer.Country</td>
+            <td>@customer.DateOfBirth.ToString("d")</td>
+            <td>
+                <a href="@Url.Action("Edit", "Customer", new { id = customer.CustomerNo })">Edit</a> |
+                <a href="@Url.Action("Delete", "Customer", new { id = customer.CustomerNo })">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Add New Customer", "Create")
+@Html.ActionLink("Back", "Index", "Home")
+</body>
+</html>

@@ -1,0 +1,60 @@
+@model IEnumerable<CRMSystem.Models.Call>
+
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Calls</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>CallNo</th>
+            <th>CustomerNo</th>
+            <th>DateOfCall</th>
+            <th>TimeOfCall</th>
+            <th>Subject</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var call in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => call.CallNo)</td>
+            <td>@Html.DisplayFor(model => call.CustomerNo)</td>
+            <td>@Html.DisplayFor(model => call.DateOfCall)</td>
+            <td>@Html.DisplayFor(model => call.TimeOfCall)</td>
+            <td>@Html.DisplayFor(model => call.Subject)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = call.CallNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = call.CallNo })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@Html.ActionLink("Create New Call", "Create")
+@Html.ActionLink("Back", "Index", "Home")
+
+</body>
+</html>

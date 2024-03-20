@@ -1,0 +1,36 @@
+@model CRMSystem.Models.Call
+
+<h2>Create a New Call</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerNo)<br>
+        @Html.DropDownListFor(model => model.CustomerNo, (SelectList)ViewData["CustomerNo"], "-- Select Customer --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CustomerNo)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateOfCall)<br>
+        @Html.EditorFor(model => model.DateOfCall, new { htmlAttributes = new { type = "date" }})
+        @Html.ValidationMessageFor(model => model.DateOfCall)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TimeOfCall)<br>
+        @Html.EditorFor(model => model.TimeOfCall, new { htmlAttributes = new { type = "time" }})
+        @Html.ValidationMessageFor(model => model.TimeOfCall)   
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Subject)<br>
+        @Html.EditorFor(model => model.Subject)
+        @Html.ValidationMessageFor(model => model.Subject)
+    </div>
+
+    <button type="submit">Create</button>
+}
+
+@Html.ActionLink("Back to List", "Index")

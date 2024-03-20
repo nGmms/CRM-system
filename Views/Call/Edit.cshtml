@@ -1,0 +1,38 @@
+@model CRMSystem.Models.Call
+
+<h2>Edit Call</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.HiddenFor(model => model.CallNo)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CustomerNo)
+        @Html.EditorFor(model => model.CustomerNo)
+        @Html.ValidationMessageFor(model => model.CustomerNo)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateOfCall)
+        @Html.EditorFor(model => model.DateOfCall, new { htmlAttributes = new { type = "date" }})
+        @Html.ValidationMessageFor(model => model.DateOfCall)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TimeOfCall)
+        @Html.EditorFor(model => model.TimeOfCall, new { htmlAttributes = new { type = "time" }})
+        @Html.ValidationMessageFor(model => model.TimeOfCall)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Subject)
+        @Html.EditorFor(model => model.Subject)
+        @Html.ValidationMessageFor(model => model.Subject)
+    </div>
+
+    <button type="submit">Save</button>
+}
+
+@Html.ActionLink("Back to List", "Index")
